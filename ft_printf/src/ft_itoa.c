@@ -6,16 +6,16 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:29:34 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/22 14:36:15 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/07/23 18:24:49 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_int_length(int n)
+static int	count_length(int n)
 {
 	int			length;
-	long long	temp;
+	long		temp;
 
 	temp = n;
 	length = 0;
@@ -32,21 +32,37 @@ static int	count_int_length(int n)
 	return (length);
 }
 
-static char	*get_result(int size, char *str, long n)
+static char	*get_result(int nbr)
 {
+	int			sign;
+	char		*result;
+	int			length;
+	long		n;
+
+	sign = 1;
+	n = nbr;
+	length = count_length(n);
+	if (n < 0)
+	{
+		sign = -1;
+		n *= -1;
+	}
+	result = (char *)malloc((length + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	result[length] = '\0';
+	if (sign == -1)
+		result[0] = '-';
 	while (n > 0)
 	{
-		str[size - 1] = (char)((n % 10) + '0');
-		size--;
+		result[length-- - 1] = (char)((n % 10) + '0');
 		n /= 10;
 	}
-	return (str);
+	return (result);
 }
 
-char	*ft_itoa(long n)
+char	*ft_itoa(int n)
 {
-	int			int_length;
-	int			sign;
 	char		*result;
 
 	if (n == 0)
@@ -56,17 +72,6 @@ char	*ft_itoa(long n)
 		result[1] = '\0';
 		return (result);
 	}
-	int_length = count_int_length(n);
-	if (n < 0)
-	{
-		sign = -1;
-		n *= -1;
-	}
-	result = (char *)malloc((int_length + 1) * sizeof(char));
-	if (result == NULL)
-		return (NULL);
-	result[int_length] = '\0';
-	if (sign == -1)
-		result[0] = '-';
-	return (get_result(int_length, result, n));
+	result = get_result(n);
+	return (result);
 }

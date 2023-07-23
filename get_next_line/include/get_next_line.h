@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 19:26:31 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/23 18:31:51 by nmunir           ###   ########.fr       */
+/*   Created: 2023/07/23 14:26:06 by nmunir            #+#    #+#             */
+/*   Updated: 2023/07/23 19:04:13 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <stdbool.h>
-# include <stdarg.h>
+# include <unistd.h>
 
-int		ft_printf(const char *format, ...);
-int		ft_putstr(char *s);
-int		ft_putchar(int c);
-int		ft_putnbr(int nbr);
-char	*ft_itoa(int n);
-int		put_hex(unsigned int num, const char format);
-int		ft_put_unsigned_int(unsigned int n);
-int		ft_put_ptr(uintptr_t ptr);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+char	*get_next_line(int fd);
+char	*ft_read_to_left_str(int fd, char *left_str);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *left_str, char *buff);
+size_t	ft_strlen(char *s);
+char	*ft_get_line(char *left_str);
+char	*ft_new_left_str(char *left_str);
 
 #endif

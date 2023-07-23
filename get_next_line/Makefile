@@ -5,24 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/03 12:33:13 by nmunir            #+#    #+#              #
-#    Updated: 2023/07/23 13:52:20 by nmunir           ###   ########.fr        #
+#    Created: 2023/07/23 14:25:09 by nmunir            #+#    #+#              #
+#    Updated: 2023/07/23 16:00:03 by nmunir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = get_next_line.a
 INCDIR = include
 CFLAGS = -Wall -Werror -Wextra -I$(INCDIR)
-CC = cc
-OBJS = $(SRC:.c=.o)
+CC = cc $(CFLAGS)
 SRCDIR = src
 
-SRC =	$(SRCDIR)/ft_printf.c \
-		$(SRCDIR)/utils.c \
-		$(SRCDIR)/ft_itoa.c \
-		$(SRCDIR)/put_hex.c \
-		$(SRCDIR)/ft_put_unsigned_int.c \
-		$(SRCDIR)/ft_put_ptr.c \
+SRC =	$(SRCDIR)/get_next_line.c \
+		$(SRCDIR)/get_next_line_utils.c \
+		
+
+OBJS = $(SRC:.c=.o)
 
 all: $(NAME)
 
@@ -40,7 +38,4 @@ fclean: clean
 
 re: fclean all
 
-norm:
-	norminette $(SRCDIR) $(INCDIR)
-
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re
