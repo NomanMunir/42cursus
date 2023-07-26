@@ -1,26 +1,3 @@
-Your project must be written in accordance with the Norm. If you have bonus
-files/functions, they are included in the norm check and you will receive a 0 if there
-is a norm error inside.
-• You will compile your code as follows (a buffer size of 42 is used as an example):
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c
-• We consider that get_next_line() has an undefined behavior if the file pointed to
-by the file descriptor changed since the last call whereas read() didn’t reach the
-end of file.
-• We also consider that get_next_line() has an undefined behavior when reading
-a binary file. However, you can implement a logical way to handle this behavior if
-you want to.
-Does your function still work if the BUFFER_SIZE value is 9999? If
-it is 1? 10000000? Do you know why?
-Try to read as little as possible each time get_next_line() is
-called. If you encounter a new line, you have to return the current
-line.
-Don’t read the whole file and then process each line.
-Forbidden
-• You are not allowed to use your libft in this project.
-• lseek() is forbidden.
-• Global variables are forbidden.
-6
-Chapter IV
 Bonus part
 This project is straightforward and doesn’t allow complex bonuses. However, we trust
 your creativity. If you completed the mandatory part, give a try to this bonus part.
