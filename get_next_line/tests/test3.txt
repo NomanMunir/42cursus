@@ -1,3 +1,5 @@
-If the subject requires it, you must submit a Makefile which will compile your
-source files to the required output with the flags -Wall, -Wextra and -Werror, use
-cc, and your Makefile must not relink.
+0123456789
+012345678
+90123456789
+0123456789
+xxxx

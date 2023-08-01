@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:03:56 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/30 16:47:57 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/07/30 16:47:04 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }
@@ -68,56 +70,56 @@ char	*ft_strjoin(char *left_str, char *buff)
 	return (str);
 }
 
-char	*ft_get_first_line(char *rem_str)
+char	*ft_get_line(char *left_str)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	if (!rem_str[i])
+	if (!left_str[i])
 		return (NULL);
-	while (rem_str[i] && rem_str[i] != '\n')
+	while (left_str[i] && left_str[i] != '\n')
 		i++;
 	str = (char *)malloc(sizeof(char) * (i + 2));
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (rem_str[i] && rem_str[i] != '\n')
+	while (left_str[i] && left_str[i] != '\n')
 	{
-		str[i] = rem_str[i];
+		str[i] = left_str[i];
 		i++;
 	}
-	if (rem_str[i] == '\n')
+	if (left_str[i] == '\n')
 	{
-		str[i] = rem_str[i];
+		str[i] = left_str[i];
 		i++;
 	}
 	str[i] = '\0';
 	return (str);
 }
 
-char	*ft_get_new_rem_str(char *rem_str)
+char	*ft_new_left_str(char *left_str)
 {
 	int		i;
 	int		j;
 	char	*str;
 
 	i = 0;
-	while (rem_str[i] && rem_str[i] != '\n')
+	while (left_str[i] && left_str[i] != '\n')
 		i++;
-	if (!rem_str[i])
+	if (!left_str[i])
 	{
-		free(rem_str);
+		free(left_str);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(rem_str) - i + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(left_str) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;
 	j = 0;
-	while (rem_str[i])
-		str[j++] = rem_str[i++];
+	while (left_str[i])
+		str[j++] = left_str[i++];
 	str[j] = '\0';
-	free(rem_str);
+	free(left_str);
 	return (str);
 }

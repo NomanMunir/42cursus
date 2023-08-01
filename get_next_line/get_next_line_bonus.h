@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 14:26:06 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/30 16:48:30 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/07/30 16:46:59 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,11 +21,11 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_get_remaining_str(int fd, char *rem_str);
+char	*left_str(int fd, char *left);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *left_str, char *buff);
-size_t	ft_strlen(const char *s);
-char	*ft_get_first_line(char *rem_str);
-char	*ft_get_new_rem_str(char *rem_str);
+size_t	ft_strlen(char *s);
+char	*ft_get_line(char *left_str);
+char	*ft_new_left_str(char *left_str);
 
 #endif
