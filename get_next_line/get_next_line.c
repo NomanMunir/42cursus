@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:04:04 by nmunir            #+#    #+#             */
-/*   Updated: 2023/08/01 13:00:14 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/08/01 21:45:15 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ char	*ft_get_remaining_str(int fd, char *rem_str)
 	while (!ft_strchr(rem_str, '\n') && byt != 0)
 	{
 		byt = read(fd, buff, BUFFER_SIZE);
-		if (byt == -1)
+		if (byt < 0 || !buff)
 		{
 			free(buff);
+			free(rem_str);
 			return (NULL);
 		}
 		buff[byt] = '\0';
@@ -43,7 +44,7 @@ char	*get_next_line(int fd)
 	static char	*rem_str;
 	char		*first_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FD)
 		return (NULL);
 	rem_str = ft_get_remaining_str(fd, rem_str);
 	if (!rem_str)

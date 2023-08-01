@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:04:04 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/30 14:25:03 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/08/01 21:48:49 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ char	*left_str(int fd, char *left)
 	while (!ft_strchr(left, '\n') && byt != 0)
 	{
 		byt = read(fd, buff, BUFFER_SIZE);
-		if (byt == -1)
+		if (byt < 0)
 		{
 			free(buff);
+			free(left);
 			return (NULL);
 		}
 		buff[byt] = '\0';
@@ -39,10 +40,10 @@ char	*left_str(int fd, char *left)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*left[4096];
+	static char	*left[MAX_FD];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	left[fd] = left_str(fd, left[fd]);
 	if (!left[fd])
 		return (NULL);

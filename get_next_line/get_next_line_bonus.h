@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 14:26:06 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/30 16:46:59 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/08/01 13:55:33 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1025
 # endif
 
 char	*get_next_line(int fd);
