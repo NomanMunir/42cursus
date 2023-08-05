@@ -6,12 +6,11 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:04:04 by nmunir            #+#    #+#             */
-/*   Updated: 2023/08/01 21:45:15 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/08/05 13:17:44 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <fcntl.h>
 #include "get_next_line.h"
 
 char	*ft_get_remaining_str(int fd, char *rem_str)
