@@ -20,7 +20,7 @@ char	*left_str(int fd, char *left)
 	int		byt;
 
 	byt = 1;
-	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buff = malloc(sizeof(char) * ((long)BUFFER_SIZE + 1));
 	while (!ft_strchr(left, '\n') && byt != 0)
 	{
 		byt = read(fd, buff, BUFFER_SIZE);
