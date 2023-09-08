@@ -116,6 +116,8 @@ char	*ft_new_left_str(char *left_str)
 	if (!str)
 		return (NULL);
 	i++;
+	if (!left_str[i])
+		return (free(left_str), free(str), NULL);
 	j = 0;
 	while (left_str[i])
 		str[j++] = left_str[i++];
