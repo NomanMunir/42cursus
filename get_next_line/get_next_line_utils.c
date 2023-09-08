@@ -116,6 +116,8 @@ char	*ft_get_new_rem_str(char *rem_str)
 	if (!str)
 		return (NULL);
 	i++;
+	if (!rem_str[i])
+		return (free(str), free(rem_str), NULL);
 	j = 0;
 	while (rem_str[i])
 		str[j++] = rem_str[i++];
