@@ -19,7 +19,7 @@ char	*ft_get_remaining_str(int fd, char *rem_str)
 	int		byt;
 
 	byt = 1;
-	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buff = (char *)malloc((long)(BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
 		return (NULL);
 	while (!ft_strchr(rem_str, '\n') && byt != 0)
