@@ -17,11 +17,17 @@ char	*get_read_string(int fd, char *rem_string)
 	char	*buffer;
 	int		read_byt;
 
+<<<<<<< HEAD
 	read_byt = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	while (read_byt != 0 && !ft_strchr(rem_string, '\n'))
+=======
+	byt = 1;
+	buff = malloc(sizeof(char) * ((long)BUFFER_SIZE + 1));
+	while (!ft_strchr(left, '\n') && byt != 0)
+>>>>>>> 6ff35208e335b3c80fc9582f03f6ba8a7c1dbd3c
 	{
 		read_byt = read(fd, buffer, BUFFER_SIZE);
 		if (read_byt < 0)

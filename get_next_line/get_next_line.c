@@ -17,9 +17,15 @@ char	*get_read_string(int fd, char *rem_string)
 	char	*buffer;
 	int		read_byt;
 
+<<<<<<< HEAD
 	read_byt = 1;
 	buffer = malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
 	if (!buffer)
+=======
+	byt = 1;
+	buff = (char *)malloc((long)(BUFFER_SIZE + 1) * sizeof(char));
+	if (!buff)
+>>>>>>> 6ff35208e335b3c80fc9582f03f6ba8a7c1dbd3c
 		return (NULL);
 	while (read_byt != 0 && !ft_strchr(rem_string, '\n'))
 	{

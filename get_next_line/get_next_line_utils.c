@@ -111,6 +111,12 @@ char	*get_new_rem_str(char *rem_str)
 	if (!res)
 		return (NULL);
 	i++;
+<<<<<<< HEAD
+=======
+	if (!rem_str[i])
+		return (free(str), free(rem_str), NULL);
+	j = 0;
+>>>>>>> 6ff35208e335b3c80fc9582f03f6ba8a7c1dbd3c
 	while (rem_str[i])
 		res[j++] = rem_str[i++];
 	res[j] = '\0';
