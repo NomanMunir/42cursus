@@ -5,20 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 15:03:56 by nmunir            #+#    #+#             */
-/*   Updated: 2023/08/05 13:21:08 by nmunir           ###   ########.fr       */
+/*   Created: 2023/08/02 11:09:41 by nmunir            #+#    #+#             */
+/*   Updated: 2023/08/07 12:55:46 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
@@ -42,69 +40,66 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *left_str, char *buff)
-{
-	size_t	i;
-	char	*str;
-
-	if (!left_str)
-	{
-		left_str = (char *)malloc(1 * sizeof(char));
-		if (!left_str)
-			return (NULL);
-		left_str[0] = '\0';
-	}
-	if (!buff)
-		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	if (left_str)
-		while (left_str[++i] != '\0')
-			str[i] = left_str[i];
-	while (*buff != '\0')
-		str[i++] = *buff++;
-	str[i] = '\0';
-	free(left_str);
-	return (str);
-}
-
-char	*ft_get_first_line(char *rem_str)
+char	*ft_strjoin(char *rem, char *buf)
 {
 	int		i;
-	char	*str;
+	char	*joined_str;
+
+	i = -1;
+	if (!rem)
+	{
+		rem = (char *) malloc(sizeof(char) * 1);
+		if (rem == NULL)
+			return (NULL);
+		rem[0] = '\0';
+	}
+	joined_str = malloc(sizeof(char) * ((ft_strlen(rem) + ft_strlen(buf)) + 1));
+	if (joined_str == NULL)
+		return (NULL);
+	while (rem[++i] != '\0')
+		joined_str[i] = rem[i];
+	while (*buf != '\0')
+		joined_str[i++] = *buf++;
+	joined_str[i] = '\0';
+	free(rem);
+	return (joined_str);
+}
+
+char	*get_first_line(char *rem_str)
+{
+	int		i;
+	char	*res;
 
 	i = 0;
 	if (!rem_str[i])
 		return (NULL);
 	while (rem_str[i] && rem_str[i] != '\n')
 		i++;
-	str = (char *)malloc(sizeof(char) * (i + 2));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (rem_str[i] && rem_str[i] != '\n')
-	{
-		str[i] = rem_str[i];
+	if (rem_str[i] == '\n')
 		i++;
-	}
+	res = (char *) malloc(sizeof(char) * (1 + i));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (rem_str[++i] && rem_str[i] != '\n')
+		res[i] = rem_str[i];
 	if (rem_str[i] == '\n')
 	{
-		str[i] = rem_str[i];
+		res[i] = rem_str[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	res[i] = '\0';
+	return (res);
 }
 
-char	*ft_get_new_rem_str(char *rem_str)
+char	*get_new_rem_str(char *rem_str)
 {
 	int		i;
+	char	*res;
 	int		j;
-	char	*str;
 
 	i = 0;
+	j = 0;
 	while (rem_str[i] && rem_str[i] != '\n')
 		i++;
 	if (!rem_str[i])
@@ -112,14 +107,13 @@ char	*ft_get_new_rem_str(char *rem_str)
 		free(rem_str);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(rem_str) - i + 1));
-	if (!str)
+	res = malloc(sizeof(char) * (ft_strlen(rem_str) + 1 - i));
+	if (!res)
 		return (NULL);
 	i++;
-	j = 0;
 	while (rem_str[i])
-		str[j++] = rem_str[i++];
-	str[j] = '\0';
+		res[j++] = rem_str[i++];
+	res[j] = '\0';
 	free(rem_str);
-	return (str);
+	return (res);
 }

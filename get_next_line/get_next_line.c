@@ -5,100 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 15:04:04 by nmunir            #+#    #+#             */
-/*   Updated: 2023/08/05 13:17:44 by nmunir           ###   ########.fr       */
+/*   Created: 2023/08/02 11:01:08 by nmunir            #+#    #+#             */
+/*   Updated: 2023/08/12 18:41:08 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "get_next_line.h"
 
-char	*ft_get_remaining_str(int fd, char *rem_str)
+char	*get_read_string(int fd, char *rem_string)
 {
-	char	*buff;
-	int		byt;
+	char	*buffer;
+	int		read_byt;
 
-	byt = 1;
-	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
+	read_byt = 1;
+	buffer = malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
+	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(rem_str, '\n') && byt != 0)
+	while (read_byt != 0 && !ft_strchr(rem_string, '\n'))
 	{
-		byt = read(fd, buff, BUFFER_SIZE);
-		if (byt < 0 || !buff)
+		read_byt = read(fd, buffer, BUFFER_SIZE);
+		if (read_byt < 0 || !buffer[0])
 		{
-			free(buff);
-			free(rem_str);
+			free(buffer);
+			free(rem_string);
 			return (NULL);
 		}
-		buff[byt] = '\0';
-		rem_str = ft_strjoin(rem_str, buff);
+		buffer[read_byt] = '\0';
+		rem_string = ft_strjoin(rem_string, buffer);
 	}
-	free(buff);
-	return (rem_str);
+	free(buffer);
+	return (rem_string);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*rem_str;
-	char		*first_line;
+	static char	*rem_string;
+	char		*res;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FD)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= FD_MAX)
 		return (NULL);
-	rem_str = ft_get_remaining_str(fd, rem_str);
-	if (!rem_str)
+	rem_string = get_read_string(fd, rem_string);
+	if (!rem_string)
 		return (NULL);
-	first_line = ft_get_first_line(rem_str);
-	rem_str = ft_get_new_rem_str(rem_str);
-	return (first_line);
+	res = get_first_line(rem_string);
+	rem_string = get_new_rem_str(rem_string);
+	return (res);
 }
+#include <stdio.h>
+int	main(void)
+{
+	int		fd1;
+	char	*line;
 
-// int	main(void)
-// {
-// 	char	*line;
-// 	// int		i;
-// 	int		fd1;
-// 	// int		fd2;
-// 	// int		fd3;
-
-// 	fd1 = open("tests/test.txt", O_RDONLY);
-// 	// fd2 = open("tests/test2.txt", O_RDONLY);
-// 	// fd3 = open("tests/test3.txt", O_RDONLY);
-// 	// i = 1;
-// 	line = get_next_line(fd1);
-// 	// line = get_next_line(fd1);
-// 	printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
-// 	printf("line 1: %s", line);
-// 	free(line);
-// 	close(fd1);
-// 	// line = get_next_line(0);
-// 	// printf("line 2: %s", line);
-// 	// line = get_next_line(0);
-// 	// printf("line 3: %s", line);
-// 	// line = get_next_line(fd1);
-// 	// printf("line 4: %s", line);
-// 	// printf("line 1: %s", line);
-// 	// line = get_next_line(fd1);
-// 	// printf("line 2: %s", line);
-// 	// line = get_next_line(fd1);
-// 	// printf("line 3: %s", line);
-// 	// line = get_next_line(fd1);
-// 	// printf("line 4: %s", line);
-// 	// free(line);
-// 	// while (i < 7)
-// 	// {
-// 	// 	line = get_next_line(fd1);
-// 	// 	printf("line [%02d]: %s", i, line);
-// 	// 	free(line);
-// 	// 	line = get_next_line(fd2);
-// 	// 	printf("line [%02d]: %s", i, line);
-// 	// 	free(line);
-// 	// 	line = get_next_line(fd3);
-// 	// 	printf("line [%02d]: %s", i, line);
-// 	// 	free(line);
-// 	// 	i++;
-// 	// }
-// 	// close(fd2);
-// 	// close(fd3);
-// 	return (0);
-// }
+	fd1 = open("tests/test.txt", O_RDONLY);
+	line = get_next_line(fd1);
+	printf("%s", line);
+	free(line);
+	close(fd1);
+	return (0);
+}

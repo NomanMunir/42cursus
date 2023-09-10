@@ -6,7 +6,7 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:59:46 by nmunir            #+#    #+#             */
-/*   Updated: 2023/07/18 14:13:49 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/07 18:20:04 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ static size_t	count_wrd(char const *s, char c)
 		}
 	}
 	return (word_count);
+}
+
+static void	ft_free(char **rtn, int i)
+{
+	int	j;
+
+	j = -1;
+	while (++j < i)
+		free(rtn[j]);
+	free(rtn);
 }
 
 char	**ft_split(char const *s, char c)
