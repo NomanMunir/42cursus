@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:02:12 by nmunir            #+#    #+#             */
-/*   Updated: 2023/08/07 13:12:12 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/24 06:53:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdbool.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 12
 # endif
 
 # ifndef FD_MAX
@@ -27,9 +27,9 @@
 # endif
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *rem, char *buf);
+int		ft_strlen_gnl(char *s);
+int		is_include_nl(char *s, int c);
+char	*ft_strjoin_gnl(char *rem, char *buf);
 char	*get_new_rem_str(char *rem_str);
 char	*get_first_line(char *rem_str);
 

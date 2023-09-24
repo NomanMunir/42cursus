@@ -6,13 +6,13 @@
 /*   By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:09:41 by nmunir            #+#    #+#             */
-/*   Updated: 2023/08/07 12:55:46 by nmunir           ###   ########.fr       */
+/*   Updated: 2023/09/22 21:46:46 by nmunir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s)
+int	ft_strlen_gnl(char *s)
 {
 	int	i;
 
@@ -22,25 +22,23 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+int	is_include_nl(char *s, int c)
 {
 	int	i;
 
 	i = 0;
 	if (!s)
 		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
 	while (s[i] != '\0')
 	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
+		if (s[i] == (char)c)
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char	*ft_strjoin(char *rem, char *buf)
+char	*ft_strjoin_gnl(char *rem, char *buf)
 {
 	int		i;
 	char	*joined_str;
@@ -48,12 +46,13 @@ char	*ft_strjoin(char *rem, char *buf)
 	i = -1;
 	if (!rem)
 	{
-		rem = (char *) malloc(sizeof(char) * 1);
+		rem = (char *)malloc(sizeof(char) * 1);
 		if (rem == NULL)
 			return (NULL);
 		rem[0] = '\0';
 	}
-	joined_str = malloc(sizeof(char) * ((ft_strlen(rem) + ft_strlen(buf)) + 1));
+	joined_str = malloc(sizeof(char) * ((ft_strlen_gnl(rem)
+					+ ft_strlen_gnl(buf)) + 1));
 	if (joined_str == NULL)
 		return (NULL);
 	while (rem[++i] != '\0')
@@ -77,7 +76,7 @@ char	*get_first_line(char *rem_str)
 		i++;
 	if (rem_str[i] == '\n')
 		i++;
-	res = (char *) malloc(sizeof(char) * (1 + i));
+	res = (char *)malloc(sizeof(char) * (1 + i));
 	if (!res)
 		return (NULL);
 	i = -1;
@@ -107,16 +106,13 @@ char	*get_new_rem_str(char *rem_str)
 		free(rem_str);
 		return (NULL);
 	}
-	res = malloc(sizeof(char) * (ft_strlen(rem_str) + 1 - i));
+	res = malloc(sizeof(char) * (ft_strlen_gnl(rem_str) + 1 - i));
 	if (!res)
 		return (NULL);
 	i++;
-<<<<<<< HEAD
-=======
 	if (!rem_str[i])
-		return (free(str), free(rem_str), NULL);
+		return (free(res), free(rem_str), NULL);
 	j = 0;
->>>>>>> 6ff35208e335b3c80fc9582f03f6ba8a7c1dbd3c
 	while (rem_str[i])
 		res[j++] = rem_str[i++];
 	res[j] = '\0';
