@@ -1,0 +1,35 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nmunir <nmunir@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/04 13:36:11 by nmunir            #+#    #+#              #
+#    Updated: 2024/02/08 10:58:31 by nmunir           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CXX = c++
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
+
+SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp \
+
+OBJS = $(SRCS:.cpp=.o)
+TARGET = violence
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(TARGET)
+
+re: fclean all
