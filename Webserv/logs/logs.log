@@ -1,0 +1,55 @@
+[2024-09-21 14:56:05] [INFO]  [initializeSignalHandling]    Initializing signal handling
+[2024-09-21 14:56:05] [INFO]  [Parser]                      Configuration file parsed successfully
+[2024-09-21 14:56:05] [INFO]  [Validation]                  Configuration file validated successfully.
+[2024-09-21 14:56:05] [INFO]  [bindAndListen]               Server is listening at http://127.0.0.1:8080
+[2024-09-21 14:56:05] [INFO]  [addToQueue]                  Added Event READ EVENT 5
+[2024-09-21 14:56:10] [INFO]  [acceptClient]                New connection, socket fd is [6], IP is : 127.0.0.1, port : 54795
+[2024-09-21 14:56:10] [INFO]  [addToQueue]                  Added Event READ EVENT 6
+[2024-09-21 14:56:10] [DEBUG] [readFromSocket]              Reading from client socket 6
+[2024-09-21 14:56:10] [DEBUG] [recvHeader]                  Header received from client 6
+[2024-09-21 14:56:10] [INFO]  [parseHeader]                 Method: GET
+[2024-09-21 14:56:10] [INFO]  [parseHeader]                 URI: /
+[2024-09-21 14:56:10] [INFO]  [parseHeader]                 Headers parsed successfully.
+[2024-09-21 14:56:10] [INFO]  [handleRequest]               Normal request detected.
+[2024-09-21 14:56:10] [INFO]  [handleRequest]               Route chosen: /
+[2024-09-21 14:56:10] [INFO]  [handleRequest]               Request handled successfully.
+[2024-09-21 14:56:10] [INFO]  [handleGET]                   Handling GET request with Path: www/
+[2024-09-21 14:56:10] [INFO]  [generateResponseFromFile]    File response generated
+[2024-09-21 14:56:10] [INFO]  [addToQueue]                  Added Event WRITE EVENT 6
+[2024-09-21 14:56:10] [INFO]  [acceptClient]                New connection, socket fd is [7], IP is : 127.0.0.1, port : 54797
+[2024-09-21 14:56:10] [INFO]  [addToQueue]                  Added Event READ EVENT 7
+[2024-09-21 14:56:10] [INFO]  [handleWrite]                 Handling write for client 6
+[2024-09-21 14:56:10] [INFO]  [removeFromQueue]             Removed WRITE Event 6
+[2024-09-21 14:56:10] [INFO]  [handleWrite]                 Write completed for client 6
+[2024-09-21 14:56:10] [DEBUG] [readFromSocket]              Reading from client socket 6
+[2024-09-21 14:56:10] [DEBUG] [recvHeader]                  Header received from client 6
+[2024-09-21 14:56:10] [INFO]  [parseHeader]                 Method: GET
+[2024-09-21 14:56:10] [INFO]  [parseHeader]                 URI: /landing-page.webp
+[2024-09-21 14:56:10] [INFO]  [parseHeader]                 Headers parsed successfully.
+[2024-09-21 14:56:10] [INFO]  [handleRequest]               Normal request detected.
+[2024-09-21 14:56:10] [INFO]  [handleRequest]               Route chosen: /
+[2024-09-21 14:56:10] [INFO]  [handleRequest]               Request handled successfully.
+[2024-09-21 14:56:10] [INFO]  [handleGET]                   Handling GET request with Path: www/landing-page.webp
+[2024-09-21 14:56:10] [INFO]  [generateResponseFromFile]    File response generated
+[2024-09-21 14:56:10] [INFO]  [addToQueue]                  Added Event WRITE EVENT 6
+[2024-09-21 14:56:10] [INFO]  [handleWrite]                 Handling write for client 6
+[2024-09-21 14:56:10] [INFO]  [removeFromQueue]             Removed WRITE Event 6
+[2024-09-21 14:56:10] [INFO]  [handleWrite]                 Write completed for client 6
+[2024-09-21 14:56:18] [INFO]  [acceptClient]                New connection, socket fd is [8], IP is : 127.0.0.1, port : 54803
+[2024-09-21 14:56:18] [INFO]  [addToQueue]                  Added Event READ EVENT 8
+[2024-09-21 14:56:18] [DEBUG] [readFromSocket]              Reading from client socket 8
+[2024-09-21 14:56:18] [DEBUG] [recvHeader]                  Header received from client 8
+[2024-09-21 14:56:18] [INFO]  [parseHeader]                 Method: POST
+[2024-09-21 14:56:18] [INFO]  [parseHeader]                 URI: /upload
+[2024-09-21 14:56:18] [INFO]  [parseHeader]                 Headers parsed successfully.
+[2024-09-21 14:56:18] [DEBUG] [readFromSocket]              Reading body from client socket 8
+[2024-09-21 14:58:42] [ERROR] [recvBody]                    Error reading from client socket
+[2024-09-21 14:58:42] [INFO]  [removeFromQueue]             Removed READ Event 8
+[2024-09-21 14:58:42] [INFO]  [addToQueue]                  Added Event WRITE EVENT 8
+[2024-09-21 14:58:42] [INFO]  [handleWrite]                 Handling write for client 8
+[2024-09-21 14:58:42] [INFO]  [handleWrite]                 Connection closed for client [8] with IP 127.0.0.1 on port 8080
+[2024-09-21 14:58:42] [INFO]  [removeFromQueue]             Removed WRITE Event 8
+[2024-09-21 14:59:17] [DEBUG] [handleDisconnection]         Handling disconnection for client 7
+[2024-09-21 14:59:17] [INFO]  [removeFromQueue]             Removed READ Event 7
+[2024-09-21 15:01:17] [DEBUG] [handleDisconnection]         Handling disconnection for client 6
+[2024-09-21 15:01:17] [INFO]  [removeFromQueue]             Removed READ Event 6

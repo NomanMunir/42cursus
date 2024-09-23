@@ -1,0 +1,8 @@
+html/PF
+*.o
+*/*.o
+*/*/*.o
+*/*/*/*.o
+webserv
+out
+.vscode
