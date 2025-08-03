@@ -1,0 +1,270 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    .gitignore                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: Generated for minishell                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/03 00:00:00                      #+#    #+#              #
+#    Updated: 2025/08/03 00:00:00                     ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# ================================= EXECUTABLE ================================ #
+
+# Main executable
+minishell
+
+# Any backup executables
+minishell_*
+*.out
+
+# ============================== OBJECT FILES =============================== #
+
+# Object files
+*.o
+*.obj
+
+# Object directories
+obj/
+*.dSYM/
+
+# ============================== LIBRARY FILES =============================== #
+
+# Static libraries
+*.a
+*.lib
+
+# Dynamic libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# ============================ TEMPORARY FILES ============================== #
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+\#*#
+
+# Swap files (vim/emacs)
+*.swp
+*.swo
+.*.swp
+.*.swo
+
+# Backup files
+*.bak
+*.backup
+*_backup
+
+# =============================== TEST FILES =============================== #
+
+# Test output files
+test_output.txt
+output.txt
+result.txt
+debug_output.txt
+
+# Test directories
+test_files/
+temp_test/
+
+# Valgrind output
+vgcore.*
+*.log
+valgrind.log
+valgrind-out.txt
+
+# Core dumps
+core
+core.*
+*.core
+
+# ============================= SYSTEM FILES ============================== #
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Linux
+*~
+.directory
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ============================= IDE/EDITOR FILES ============================= #
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+tags
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+
+# ============================== DEBUGGING FILES ============================== #
+
+# GDB
+.gdb_history
+peda-session-*.txt
+
+# Strace output
+strace.out
+trace.log
+
+# Debug symbols
+*.dSYM/
+
+# AddressSanitizer output
+*.asan
+
+# ============================= BUILD ARTIFACTS ============================= #
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile.cmake
+
+# Autotools
+autom4te.cache/
+config.h
+config.log
+config.status
+configure
+Makefile.in
+aclocal.m4
+
+# ============================== PROJECT SPECIFIC ============================= #
+
+# Readline history (if saved locally)
+.minishell_history
+
+# Environment files
+.env
+.env.local
+
+# Custom test scripts output
+test_results.txt
+benchmark_results.txt
+
+# Documentation builds (if using generators)
+docs/_build/
+docs/.doctrees/
+
+# Coverage reports
+*.gcov
+*.gcda
+*.gcno
+coverage/
+htmlcov/
+
+# Profiling data
+gmon.out
+*.prof
+
+# =============================== ARCHIVES ================================= #
+
+# Compressed files
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tgz
+*.zip
+*.rar
+*.7z
+
+# ============================= MISCELLANEOUS ============================= #
+
+# Patch files
+*.patch
+*.diff
+
+# Lock files
+*.lock
+
+# Node modules (if any frontend tools)
+node_modules/
+
+# Python cache (if any Python tools)
+__pycache__/
+*.pyc
+*.pyo
+
+# Ruby gems (if any Ruby tools)
+.bundle/
+vendor/
+
+# Logs
+*.log
+logs/
+
+# Temporary directories
+tmp/
+temp/
+
+# ========================= 42 SCHOOL SPECIFIC ========================== #
+
+# Subjects (usually shouldn't be committed)
+en.subject.pdf
+fr.subject.pdf
+subject.pdf
+
+# 42 evaluation files
+*.42_eval
+
+# Peer evaluation notes
+eval_notes.txt
+
+# ========================== CUSTOM ADDITIONS =========================== #
+
+# Add any project-specific files below this line
+
+# Example: Custom configuration files
+# config.local
+# settings.local
+
+# Example: Large test files
+# large_test_file.txt
+# big_input.dat
+
+# End of .gitignore

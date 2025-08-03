@@ -34,7 +34,7 @@
 # include <termios.h>
 # include <unistd.h>
 
-int						g_signum;
+extern int				g_signum;
 
 typedef struct s_iterators
 {

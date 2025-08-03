@@ -1,0 +1,226 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    minishell.supp                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: Generated for minishell                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/03 00:00:00                      #+#    #+#              #
+#    Updated: 2025/08/03 00:00:00                     ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Valgrind suppression file for minishell
+# This file suppresses known false positives from external libraries
+
+# ================================ READLINE ================================== #
+
+# Readline library allocations that are not freed until program exit
+{
+   readline_history_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:*readline*
+}
+
+{
+   readline_history_leak_2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libreadline.so*
+}
+
+{
+   readline_malloc_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:readline
+}
+
+{
+   readline_realloc_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   ...
+   fun:readline
+}
+
+{
+   readline_add_history_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:add_history
+}
+
+{
+   readline_clear_history_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:clear_history
+}
+
+{
+   readline_rl_initialize_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:rl_initialize
+}
+
+{
+   readline_using_history_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:using_history
+}
+
+# ============================== TERMCAP/CURSES ============================= #
+
+{
+   curses_setupterm_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:*setupterm*
+}
+
+{
+   curses_tgetent_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:tgetent
+}
+
+{
+   termcap_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libtermcap.so*
+}
+
+{
+   ncurses_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libncurses.so*
+}
+
+# ================================ GLIBC ================================== #
+
+# GNU libc allocations that persist until program exit
+{
+   glibc_dlopen_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:_dl_open
+}
+
+{
+   glibc_setlocale_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:setlocale
+}
+
+{
+   glibc_getpwuid_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:getpwuid*
+}
+
+{
+   glibc_getgrnam_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:getgrnam*
+}
+
+# ============================= MACOS SPECIFIC ============================== #
+
+{
+   macos_readline_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libreadline*dylib*
+}
+
+{
+   macos_editline_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libedit*dylib*
+}
+
+{
+   macos_system_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libSystem*dylib*
+}
+
+# ============================== COMMON PATTERNS ============================= #
+
+# Thread-local storage allocations
+{
+   tls_allocation
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:__tls_get_addr
+}
+
+# Static initializations that persist until program exit
+{
+   static_initialization
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:__static_initialization_and_destruction*
+}
+
+# Conditional variable and mutex initialization
+{
+   pthread_init_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   ...
+   fun:pthread_*
+}
+
+# ========================== ADDITIONAL SUPPRESSIONS ========================= #
+
+# Add custom suppressions below this line as needed
+
+# Example: If you find a specific leak pattern in your testing
+# {
+#    custom_leak_name
+#    Memcheck:Leak
+#    match-leak-kinds: definite,indirect,possible,reachable
+#    fun:malloc
+#    fun:your_function_name
+# }
+
+# End of suppression file
