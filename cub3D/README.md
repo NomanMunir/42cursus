@@ -1,50 +1,121 @@
-# Parsing
-[*] Check the file extension is .cub
-[*] Map has NO, SO, WE, EA texture with proper extension .xpm
-[*] Ceiling and floor have RGB color within 0 and 255
-[*] Only 0 for Empty Areas, 1 for Walls, N, S, E or W for user's starting direction in map
-[*] There are multiple textures for the same wall (north wall texture).
-[*] replace tabs to 4 spaces.
-[*] No more that one player
-[*] Non-rectangle map must be operable
-[*] map must be closed/surrounded by walls
-[*] Except map content, each type of element can be separated by one or more empty line
-[*] Map content has to be the last element.
-[*] Except for the map, each type of information from an element can be separated
-    by one or more space
-[*] The map must be parsed as it looks in the file. Spaces are a valid part of the
-    as long as it respects the rules of the map.
-    map and are up to you to handle. You must be able to parse any kind of map,
-[ ] Resolution bigger then the screen.
-[*] F 55 ,, 112  ,,55 ,, 1 12,,
-# Ray Casting
+# cub3D - 3D Raycasting Engine
 
+## 📖 Description
 
+cub3D is a 3D graphical project inspired by the famous Wolfenstein 3D game. Using raycasting techniques, you create a dynamic view inside a maze where you can move around and explore. This project teaches 3D graphics programming, mathematical projections, and advanced graphics concepts.
 
-# Movement
-[*] left and right arrow keys to look left and right 
-[*] The W, A, S, and D keys to move
-[*] ESC must close the window and quit the program cleanly.
-[*] red cross on the window’s frame must close the window and quit the program cleanly.
-[*] The use of images of the minilibX is strongly recommended.
+## 🎯 Objectives
 
-# Start
-Based on the viewing angle, subtract 30 degrees (half of the FOV).
-Starting from column 0:
-[*] Cast a ray.
-[*] Trace the ray until it hits a wall.
-[*] Record the distance to the wall (the distance is equal to the length of the ray).
-[*] Add the angle increment so that the ray moves to the right (we know from Figure 10 that the value of the angle increment is 60/320 degrees).
-[*] Repeat step 2 and 3 for each subsequent column until all 320 rays are cast.
+- Understand raycasting and 3D projection algorithms
+- Learn advanced graphics programming techniques
+- Master mathematical concepts for 3D rendering
+- Practice file parsing for game configuration
+- Implement smooth player movement and rotation
 
-[*] Crazy ray
-[*] Intersection
-[*] Short Walls
-[*] getting in the wall
-[*] TILE and TILE_3D
-[*] change put_pixel
-[*] too much leak. fix it
-[ ] track for memory leak
-[*] tab to spaces are still not good.
+## 🗺 Map File Format (.cub)
 
-[ ] Static function.
+### Configuration Elements
+```
+NO ./assets/textures/north.xpm
+SO ./assets/textures/south.xpm
+WE ./assets/textures/west.xpm
+EA ./assets/textures/east.xpm
+
+F 220,100,0
+C 225,225,225
+
+        1111111111111111111111111
+        1000000000110000000000001
+        1011000001110000000000001
+        1001000000000000000000001
+111111111011000001110000000000001
+100000000011000001110111111111111
+11110111111111011100000010001
+11110111111111011101010010001
+11000000110101011100000010001
+10000000000000001100000010001
+10000000000000001101010010001
+11000001110101011111011110N0111
+11110111 1110101 101111010001
+11111111 1111111 111111111111
+```
+
+### Map Components
+- `NO`, `SO`, `WE`, `EA` - Texture paths for each wall direction
+- `F` - Floor color (R,G,B format)
+- `C` - Ceiling color (R,G,B format)
+- `1` - Wall
+- `0` - Empty space (floor)
+- `N`, `S`, `E`, `W` - Player starting position and orientation
+
+### Map Requirements
+- **Closed**: Map must be surrounded by walls
+- **Valid Characters**: Only `0`, `1`, `N`, `S`, `E`, `W`, and spaces
+- **Single Player**: Exactly one player starting position
+- **Rectangular**: Map must be properly formatted
+- **Valid Path**: Player must be able to move within the map
+
+## 🔍 Raycasting Algorithm
+
+### Core Concept
+Raycasting creates a 3D perspective by casting rays from the player's position and calculating wall distances to determine wall heights on screen.
+
+### Algorithm Steps
+1. **For each screen column**:
+   - Cast a ray from player position
+   - Calculate ray direction based on player orientation and column
+   - Use DDA (Digital Differential Analyzer) to find wall intersections
+   - Calculate perpendicular distance to avoid fisheye effect
+   - Determine wall height based on distance
+   - Render the wall column with appropriate texture
+
+## 🎮 Controls
+
+### Movement Controls
+| Key | Action |
+|-----|--------|
+| W | Move Forward |
+| S | Move Backward |
+| A | Strafe Left |
+| D | Strafe Right |
+| ← | Rotate Left |
+| → | Rotate Right |
+| ESC | Exit Game |
+
+## 🛠 Compilation
+
+```bash
+make        # Compile cub3D
+make clean  # Remove object files
+make fclean # Remove object files and executable
+make re     # Recompile everything
+```
+
+## 📋 Usage
+
+```bash
+# Run cub3D with a map file
+./cub3D maps/valid_map.cub
+```
+
+## 📏 Technical Requirements
+
+- **Language**: C
+- **Norm**: 42 Coding Standard
+- **Graphics**: MiniLibX library
+- **Math**: Mathematical functions for trigonometry
+- **Memory**: No memory leaks allowed
+- **Performance**: Smooth rendering at reasonable frame rates
+
+## 💡 Key Learning Points
+
+1. **3D Mathematics**: Understanding 3D projection and coordinate systems
+2. **Raycasting**: Implementing efficient 3D rendering algorithms
+3. **Graphics Optimization**: Performance considerations for real-time rendering
+4. **File Parsing**: Complex configuration file handling
+5. **Mathematical Concepts**: Trigonometry, linear algebra, vector operations
+6. **Game Development**: Basic game loop and input handling
+
+---
+
+*This project provides a comprehensive introduction to 3D graphics programming and prepares you for advanced computer graphics and game development.*
