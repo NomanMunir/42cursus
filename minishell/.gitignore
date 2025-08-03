@@ -79,10 +79,6 @@ tests/temp/
 tests/logs/*
 tests/temp/*
 
-# Test case outputs
-tests/test_cases/*.output
-tests/test_cases/*.result
-
 # Individual test outputs
 *_test.txt
 *_output.txt

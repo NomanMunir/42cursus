@@ -239,6 +239,21 @@ Detailed documentation is available in the `docs/` directory:
 
 ## 🧪 Testing
 
+### Professional Test Suite
+```bash
+# Run comprehensive test suite
+make test
+
+# Run specific test categories  
+make test-unit         # Unit tests for edge cases
+make test-stress       # Performance and stress tests
+make test-memory       # Memory leak detection
+make test-all          # All test categories
+
+# Manual test runner
+./tests/test_runner.sh all --verbose
+```
+
 ### Manual Testing
 ```bash
 # Basic functionality
@@ -250,15 +265,6 @@ minishell$ exit
 # Test with complex commands
 minishell$ export TEST="hello world"
 minishell$ echo $TEST | wc -w
-```
-
-### Automated Testing
-```bash
-# Test with external testers (if available)
-bash test_script.sh
-
-# Memory leak testing
-make valgrind
 ```
 
 ### Debug Mode

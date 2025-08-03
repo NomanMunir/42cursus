@@ -9,7 +9,6 @@ tests/
 ├── test_runner.sh      # Main test runner with comprehensive categories
 ├── unit_tests.sh       # Focused unit tests for edge cases  
 ├── stress_tests.sh     # Performance and stress testing
-├── test_cases/         # Individual test case files
 ├── logs/              # Test execution logs (created during runs)
 └── temp/              # Temporary files for testing (created during runs)
 ```
@@ -175,7 +174,7 @@ Use the test utility functions:
 
 ### Custom Test Files
 
-Create test files in `test_cases/` directory and source them from main test scripts.
+Add custom tests directly to the main test scripts (`test_runner.sh`, `unit_tests.sh`, or `stress_tests.sh`) using the provided utility functions.
 
 ## Troubleshooting
 
@@ -214,10 +213,13 @@ cat tests/logs/test.log
 The test suite integrates with the project Makefile:
 
 ```bash
-make test          # Run basic test suite
-make test-unit     # Run unit tests  
-make test-stress   # Run stress tests
-make test-all      # Run comprehensive tests
+make test            # Run comprehensive test suite
+make test-unit       # Run unit tests for edge cases
+make test-stress     # Run stress and performance tests  
+make test-all        # Run all test categories
+make test-basic      # Run basic functionality tests
+make test-memory     # Run memory leak tests
+make test-performance # Run performance tests
 ```
 
 ## Continuous Integration
