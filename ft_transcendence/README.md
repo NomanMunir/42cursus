@@ -202,10 +202,21 @@ This project fulfills the following 42 requirements:
 - ✅ Security implementation
 - ✅ Docker containerization
 
-## 🏅 Authors
+## 🏅 Authors & Contributors
 
-- **[Nauman Munir](https://github.com/NomanMunir)** - Full-Stack Developer, Project Lead
-- **[Alaa Bashir](https://github.com/alaabashir)** - Frontend Developer, Game Logic Specialist
+### Core Development Team
+- **[Nauman Munir](https://github.com/NomanMunir)** - Frontend Developer, Project Lead
+- **[Alaa Bashir](https://github.com/AKhabibr)** - Frontend Developer, Game Logic Specialist
+- **[Artur Khabibrakhmanov](https://github.com/AKhabibr)** - Backend Developer
+- **[Alex](https://github.com/alex-and-ers)** - Backend Developer
+
+### Contributing
+We welcome contributions from the community! Each team member has made significant contributions to different aspects of the project:
+
+- **Backend Services**: User management and tournament APIs
+- **Frontend Development**: Game interface and user experience
+- **Game Logic**: AI implementation and physics engine
+- **Infrastructure**: Docker containerization and deployment
 
 ## 📄 License
 
