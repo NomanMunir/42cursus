@@ -1,0 +1,35 @@
+# Redirection Test Cases
+# Test input/output redirections
+
+# Output redirection
+echo "output test" > output_test.txt
+cat output_test.txt
+echo "second line" >> output_test.txt
+cat output_test.txt
+
+# Input redirection
+echo "input content" > input_test.txt
+cat < input_test.txt
+wc -l < input_test.txt
+
+# Here-document
+cat << EOF
+This is a here-document test
+Multiple lines
+End of here-doc
+EOF
+
+cat << END
+Testing variable expansion in here-doc
+Current directory: $PWD
+User: $USER
+END
+
+# Multiple redirections
+echo "redirect test" > file1.txt > file2.txt
+cat file2.txt
+
+# Cleanup
+rm -f output_test.txt input_test.txt file1.txt file2.txt
+
+exit

@@ -1,0 +1,43 @@
+# Quote Handling Test Cases
+# Test various quote scenarios
+
+# Basic quotes
+echo "double quoted string"
+echo 'single quoted string'
+echo "string with 'single quotes' inside"
+echo 'string with "double quotes" inside'
+
+# Empty quotes
+echo ""
+echo ''
+echo "empty: ''"
+echo 'empty: ""'
+
+# Variable expansion in quotes
+export TEST_VAR=expanded
+echo "Variable in double quotes: $TEST_VAR"
+echo 'Variable in single quotes: $TEST_VAR'
+
+# Special characters in quotes
+echo "Special chars: | > < & ; $ * ?"
+echo 'Special chars: | > < & ; $ * ?'
+
+# Nested quote scenarios
+echo "outer 'inner single' quotes"
+echo 'outer "inner double" quotes'
+
+# Escaped quotes
+echo "This is a \"quoted\" word"
+echo 'This is a '\''quoted'\'' word'
+
+# Mixed quote scenarios
+echo "start 'mixed' end"
+echo 'start "mixed" end'
+echo "complex 'nested \"deep\" nesting' example"
+
+# Quote with pipes and redirections
+echo "pipe symbol | in quotes"
+echo "redirect > symbol in quotes"
+echo 'pipe | and redirect > in single quotes'
+
+exit

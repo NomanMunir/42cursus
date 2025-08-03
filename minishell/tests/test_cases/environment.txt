@@ -1,0 +1,44 @@
+# Environment Variables Test Cases
+# Test environment variable handling
+
+# Basic variable access
+echo $HOME
+echo $PATH
+echo $USER
+echo $PWD
+
+# Variable assignment and access
+export MY_VAR=hello
+echo $MY_VAR
+export MY_VAR="hello world"
+echo $MY_VAR
+
+# Variable in quotes
+export QUOTED_VAR="test value"
+echo "Variable: $QUOTED_VAR"
+echo 'No expansion: $QUOTED_VAR'
+
+# Variable concatenation
+export PREFIX=hello
+export SUFFIX=world
+echo $PREFIX$SUFFIX
+echo ${PREFIX}_${SUFFIX}
+
+# Special variables
+echo "Exit status: $?"
+true
+echo "After true: $?"
+false
+echo "After false: $?"
+
+# Undefined variable
+echo "Undefined: $UNDEFINED_VAR"
+echo "Still undefined: ${UNDEFINED_VAR}"
+
+# Complex variable usage
+export COMPLEX="value with spaces"
+echo "Complex: $COMPLEX"
+export NESTED="$COMPLEX nested"
+echo "Nested: $NESTED"
+
+exit

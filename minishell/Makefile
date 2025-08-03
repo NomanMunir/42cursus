@@ -152,6 +152,13 @@ help:
 	@echo "  norm     - Check code with norminette"
 	@echo "  debug    - Build with debug flags and AddressSanitizer"
 	@echo "  valgrind - Run with valgrind (using suppressions)"
+	@echo "  test     - Run comprehensive test suite"
+	@echo "  test-unit - Run unit tests for edge cases"
+	@echo "  test-stress - Run stress and performance tests"
+	@echo "  test-all - Run all test categories"
+	@echo "  test-basic - Run basic functionality tests"
+	@echo "  test-memory - Run memory leak tests"
+	@echo "  test-performance - Run performance tests"
 	@echo "  docs     - Open project documentation"
 	@echo "  help     - Show this help message"
 
@@ -172,4 +179,40 @@ docs:
 		echo "📖 Use your preferred editor to view the documentation files."; \
 	fi
 
-.PHONY: all clean fclean re norm debug valgrind docs help
+# ================================ TEST TARGETS ============================== #
+
+test: $(NAME)
+	@echo "🧪 Running comprehensive test suite..."
+	@./tests/test_runner.sh all
+
+test-unit: $(NAME)
+	@echo "🔬 Running unit tests..."
+	@./tests/unit_tests.sh
+
+test-stress: $(NAME)
+	@echo "💪 Running stress tests..."
+	@./tests/stress_tests.sh
+
+test-all: $(NAME)
+	@echo "🚀 Running all test categories..."
+	@./tests/test_runner.sh all -v
+	@echo ""
+	@echo "🔬 Running unit tests..."
+	@./tests/unit_tests.sh
+	@echo ""
+	@echo "💪 Running stress tests..."
+	@./tests/stress_tests.sh
+
+test-basic: $(NAME)
+	@echo "🔧 Running basic functionality tests..."
+	@./tests/test_runner.sh basic
+
+test-memory: $(NAME)
+	@echo "🧠 Running memory leak tests..."
+	@./tests/test_runner.sh memory -v
+
+test-performance: $(NAME)
+	@echo "📊 Running performance tests..."
+	@./tests/test_runner.sh performance -v
+
+.PHONY: all clean fclean re norm debug valgrind test test-unit test-stress test-all test-basic test-memory test-performance docs help

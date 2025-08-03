@@ -73,6 +73,25 @@ debug_output.txt
 test_files/
 temp_test/
 
+# Professional test suite outputs
+tests/logs/
+tests/temp/
+tests/logs/*
+tests/temp/*
+
+# Test case outputs
+tests/test_cases/*.output
+tests/test_cases/*.result
+
+# Individual test outputs
+*_test.txt
+*_output.txt
+*_result.txt
+input_*.txt
+output_*.txt
+file*.txt
+redirect_*.txt
+
 # Valgrind output
 vgcore.*
 *.log
@@ -185,6 +204,24 @@ aclocal.m4
 # Custom test scripts output
 test_results.txt
 benchmark_results.txt
+
+# Stress test temporary files
+/tmp/many_vars.sh
+/tmp/rapid_test.sh
+/tmp/pipe_test.sh
+/tmp/heredoc_test.sh
+/tmp/alloc_test.sh
+/tmp/file_test.sh
+/tmp/redirect_test.sh
+/tmp/bg_test.sh
+/tmp/error_test.sh
+/tmp/syntax_test.sh
+
+# Test environment files
+test_input*.txt
+multiline.txt
+readonly.txt
+quoted*.txt
 
 # Documentation builds (if using generators)
 docs/_build/
