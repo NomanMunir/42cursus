@@ -1,8 +1,173 @@
-html/PF
+# =============================================================================
+# WEBSERV PROJECT GITIGNORE
+# =============================================================================
+
+# Compiled binaries
+webserv
+webserv_debug
+*.exe
+out
+
+# Object files
 *.o
 */*.o
 */*/*.o
 */*/*/*.o
-webserv
-out
-.vscode
+*.obj
+obj/
+.deps/
+
+# Dependency files
+*.d
+
+# Debug files
+*.dSYM/
+*.gdb_history
+vgcore.*
+core
+core.*
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+\#*#
+
+# Log files
+*.log
+logs/*.log
+access.log
+error.log
+
+# Test output files
+/tmp/webserv_*.log
+/tmp/siege.log
+/tmp/ab_results.txt
+/tmp/memory_usage.log
+test_results.txt
+
+# Uploaded files (for testing)
+www/uploads/*
+!www/uploads/.gitkeep
+
+# Configuration backup files
+*.conf.bak
+*.conf.orig
+config/*.bak
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build system files
+.make
+*.make
+Makefile.bak
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup and temporary files
+*.bak
+*.backup
+*.orig
+*.rej
+*.patch
+
+# Profiling and debugging output
+gmon.out
+*.gcov
+*.gcda
+*.gcno
+perf.data*
+callgrind.out.*
+
+# Memory debugging
+*.memcheck
+leak_check.txt
+valgrind.log
+
+# Documentation build files
+docs/html/
+docs/latex/
+docs/man/
+doxygen_warnings.txt
+html/PF
+
+# Archive files
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+
+# Certificate and key files (if any)
+*.pem
+*.key
+*.crt
+*.csr
+
+# Environment and local configuration
+.env
+.env.local
+local.conf
+
+# Performance test results
+benchmark_results/
+stress_test_output/
+
+# Clang/GCC specific
+*.pch
+*.gch
+
+# CMake (if ever used)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile.cmake
+
+# Code coverage
+*.info
+coverage/
+lcov.info
+
+# Static analysis
+cppcheck.xml
+scan-build-*/
+
+# Package manager files
+*.deb
+*.rpm
+*.pkg
+
+# Coredumps (platform specific)
+core.*
+*.core
+
+# Sanitizer output
+*sanitizer*
+*.asan
+*.tsan
+*.msan
+
+# Keep important empty directories
+!logs/.gitkeep
+!www/uploads/.gitkeep
+!obj/.gitkeep
+
+# Local testing scripts
+test_local.sh
+benchmark_local.sh
+local_*.sh

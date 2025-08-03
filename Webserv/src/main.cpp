@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "srcs/events/EventPoller.hpp"
+#include "./events/EventPoller.hpp"
 
 #if defined(__APPLE__) || defined(__FreeBSD__)
-    #include "srcs/events/KQueuePoller.hpp"
+    #include "./events/KQueuePoller.hpp"
 #elif defined(__linux__)
-    #include "srcs/events/EpollPoller.hpp"
+    #include "./events/EpollPoller.hpp"
 #endif
 
-#include "srcs/server/ServerManager.hpp"
-#include "srcs/utils/MimeTypes.hpp"
-#include "srcs/utils/Logs.hpp"
-#include "srcs/parsing/Validation.hpp"
+#include "./server/ServerManager.hpp"
+#include "./utils/MimeTypes.hpp"
+#include "./utils/Logs.hpp"
+#include "./parsing/Validation.hpp"
 #include <csignal>
 #include <stdexcept>
 #include <unistd.h>
@@ -29,9 +29,12 @@
 
 void handleSignal(int signal)
 {
-    if (signal == SIGINT || signal == SIGTERM)
+    if (signal == SIGINT || signal == SIGTERM || signal == SIGQUIT)
     {
-        std::cout << "\nShutting down server..." << std::endl;
+        if (signal == SIGQUIT)
+            std::cout << "\nReceived quit signal (Ctrl+\\), shutting down server..." << std::endl;
+        else
+            std::cout << "\nShutting down server..." << std::endl;
         ServerManager::running = false;
     }
     else if (signal == SIGCHLD)
@@ -52,6 +55,7 @@ void initializeSignalHandling()
     signal(SIGPIPE, SIG_IGN);
 	signal(SIGINT, handleSignal);
 	signal(SIGTERM, handleSignal);
+	signal(SIGQUIT, handleSignal);  // Handle Ctrl+\ gracefully
     signal(SIGCHLD, handleSignal);
 
     sa.sa_handler = handleSignal;
@@ -60,6 +64,7 @@ void initializeSignalHandling()
 
     sigaction(SIGINT, &sa, NULL);
     sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGQUIT, &sa, NULL);  // Handle Ctrl+\ gracefully
     sigaction(SIGCHLD, &sa, NULL);
 }
 
