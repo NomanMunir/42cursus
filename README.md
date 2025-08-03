@@ -70,11 +70,57 @@ Welcome to my 42 Abu Dhabi curriculum journey! This repository contains all the 
 
 ### Advanced Projects
 
+#### **minishell** - Custom Shell Implementation
+- **Description**: Recreation of bash shell with command parsing, execution, and built-in functions
+- **Skills**: Process management, signal handling, environment variables, command parsing
+- **Features**: 
+  - Command execution with absolute/relative paths
+  - Built-in commands: `echo`, `cd`, `pwd`, `export`, `unset`, `env`, `exit`
+  - Pipes and redirections (`|`, `<`, `>`, `>>`)
+  - Environment variable expansion (`$USER`, `$?`)
+  - Signal handling (Ctrl+C, Ctrl+D, Ctrl+\\)
+  - Quote handling (single and double quotes)
+- **Status**: ✅ Completed
+
 #### **NetPractice** - Network Configuration
 - **Description**: Network administration and TCP/IP configuration exercises
 - **Skills**: Subnetting, IP addressing, routing, network troubleshooting
 - **Levels**: 10 configuration levels with increasing complexity
 - **Topics**: CIDR notation, subnet masks, default gateways, routing tables
+- **Status**: ✅ Completed
+
+#### **Webserv** - HTTP Web Server
+- **Description**: HTTP/1.1 compliant web server implementation from scratch
+- **Skills**: Network programming, HTTP protocol, I/O multiplexing, CGI
+- **Features**:
+  - HTTP/1.1 protocol support
+  - GET, POST, DELETE methods
+  - Static file serving
+  - CGI script execution
+  - Virtual hosts support
+  - Configuration file parsing
+  - Non-blocking I/O with poll/epoll
+- **Status**: ✅ Completed
+
+#### **ft_transcendence** - Full-Stack Web Application
+- **Description**: Complete web-based Pong game platform with microservices architecture
+- **Skills**: Full-stack development, microservices, containerization, real-time gaming
+- **Architecture**:
+  - **Backend**: Django REST API for user management
+  - **Tournament Service**: Django REST API for tournament handling
+  - **Frontend**: Vanilla JavaScript SPA with Bootstrap
+  - **Database**: PostgreSQL with Docker containers
+  - **Infrastructure**: Docker Compose orchestration
+- **Features**:
+  - Single-player vs AI with intelligent behavior
+  - 8-player knockout tournaments with bracket visualization
+  - Multiplayer support (3-4 players simultaneously)
+  - Multi-language support (English, German, Arabic)
+  - Responsive design for all devices
+  - Real-time gameplay with 60 FPS canvas rendering
+  - User authentication and game statistics
+  - RESTful APIs for service communication
+- **Live Demo**: [🕹️ Play Now](https://nomanmunir.github.io/ft_transcendence_frontend/)
 - **Status**: ✅ Completed
 
 ### C++ Projects (Object-Oriented Programming)
@@ -96,9 +142,13 @@ Welcome to my 42 Abu Dhabi curriculum journey! This repository contains all the 
 
 ## 🛠 Technologies & Tools Used
 
-- **Languages**: C, C++
-- **Graphics**: MiniLibX
-- **Build System**: Makefiles
+- **Languages**: C, C++, JavaScript, Python
+- **Frameworks**: Django, Django REST Framework, Bootstrap
+- **Graphics**: MiniLibX, HTML5 Canvas
+- **Web Technologies**: HTML5, CSS3, NGINX, HTTP/1.1
+- **Databases**: PostgreSQL
+- **DevOps**: Docker, Docker Compose
+- **Build System**: Makefiles, npm
 - **Version Control**: Git
 - **Debugging**: GDB, Valgrind
 - **Standards**: C89/C90, C++98
@@ -110,8 +160,11 @@ Welcome to my 42 Abu Dhabi curriculum journey! This repository contains all the 
 - **Algorithm Design**: Sorting algorithms, optimization techniques
 - **Systems Programming**: Process management, threading, IPC
 - **Graphics Programming**: 2D/3D rendering, event handling
-- **Network Programming**: TCP/IP, routing, network configuration
+- **Network Programming**: TCP/IP, routing, HTTP protocol implementation
+- **Web Development**: Full-stack development, REST APIs, microservices
 - **Object-Oriented Programming**: Classes, inheritance, polymorphism
+- **DevOps**: Containerization, service orchestration, CI/CD principles
+- **Database Management**: PostgreSQL, database design, migrations
 
 ### Soft Skills
 - **Problem Solving**: Breaking down complex problems into manageable parts
@@ -121,18 +174,21 @@ Welcome to my 42 Abu Dhabi curriculum journey! This repository contains all the 
 
 ## 📋 Project Status
 
-| Project | Language | Status | Difficulty |
-|---------|----------|--------|------------|
+| Project | Language/Tech | Status | Difficulty |
+|---------|---------------|--------|------------|
 | libft | C | ✅ | ⭐⭐ |
 | ft_printf | C | ✅ | ⭐⭐ |
 | get_next_line | C | ✅ | ⭐⭐ |
 | Push_swap | C | ✅ | ⭐⭐⭐ |
 | pipex | C | ✅ | ⭐⭐⭐ |
 | so_long | C | ✅ | ⭐⭐⭐ |
+| minishell | C | ✅ | ⭐⭐⭐⭐⭐⭐ |
 | philosophers | C | ✅ | ⭐⭐⭐⭐ |
 | cub3D | C | ✅ | ⭐⭐⭐⭐ |
 | NetPractice | Config | ✅ | ⭐⭐⭐ |
+| Webserv | C++ | ✅ | ⭐⭐⭐⭐⭐ |
 | CPP Modules 00-09 | C++ | ✅ | ⭐⭐⭐⭐ |
+| ft_transcendence | Full-Stack | ✅ | ⭐⭐⭐⭐⭐ |
 
 ## 🚀 Getting Started
 
@@ -155,10 +211,11 @@ The projects are designed to be completed in a specific order, with each buildin
 
 1. **Foundation**: libft → ft_printf → get_next_line
 2. **Algorithms**: Push_swap
-3. **System Programming**: pipex → philosophers
+3. **System Programming**: pipex → minishell → philosophers
 4. **Graphics**: so_long → cub3D
-5. **Networking**: NetPractice
+5. **Networking**: NetPractice → Webserv
 6. **Object-Oriented Programming**: CPP Modules 00-09
+7. **Full-Stack Development**: ft_transcendence (Final Project)
 
 ## 🤝 42 Abu Dhabi Community
 
