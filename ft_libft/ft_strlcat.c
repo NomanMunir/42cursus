@@ -36,16 +36,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		dst[dstlen] = '\0';
 	return (totallen);
 }
-
-// #include "string.h"
-// #include "stdio.h"
-// int main(void)
-// {
-// 	char ft_s1[20] = "";
-// 	char ft_s2[] = "World!";
-// 	char s1[20] = "NULL";
-// 	char s2[] = "WORLD!";
-// 	printf("%zu \n", ft_strlcat(ft_s1, ft_s2, 0));
-// 	printf("%lu", strlcat(s1, s2, 0));
-// 	return (0);
-// }

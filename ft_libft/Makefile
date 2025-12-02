@@ -29,7 +29,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-all:$(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
@@ -45,4 +45,4 @@ fclean: clean
 
 re: fclean all
 	
-.PHONY: all clean fclaen re
+.PHONY: all clean fclean re bonus

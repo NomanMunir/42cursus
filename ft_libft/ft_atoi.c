@@ -15,33 +15,27 @@
 int	ft_atoi(const char *str)
 {
 	long	result;
-	bool	nagetive;
+	bool	negative;
 
 	result = 0;
+	negative = false;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
-		if (*str++ == '-')
-			nagetive = true;
+		if (*str == '-')
+			negative = true;
+		str++;
 	}
 	while (ft_isdigit(*str))
 	{
-		if (nagetive && ((result * 10) + *str - '0') < result)
+		if (negative && ((result * 10) + *str - '0') < result)
 			return (0);
-		else if (!nagetive && ((result * 10) + *str - '0') < result)
+		else if (!negative && ((result * 10) + *str - '0') < result)
 			return (-1);
 		result = result * 10 + (*str++ - '0');
 	}
-	if (nagetive)
+	if (negative)
 		result = -result;
 	return (result);
 }
-
-// #include "stdio.h"
-// int main(int a, char **av)
-// {
-// 	printf("%d \n", ft_atoi(av[1]));
-// 	printf("%d", atoi(av[1]));
-// 	return (0);
-// }

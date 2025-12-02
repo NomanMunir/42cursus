@@ -12,32 +12,32 @@
 
 #include "libft.h"
 
-static int	count_int_length(int n)
+static int	count_digits(int n)
 {
 	int			length;
-	long long	temp;
+	long long	num;
 
-	temp = n;
+	num = n;
 	length = 0;
-	if (temp < 0)
+	if (num < 0)
 	{
 		length++;
-		temp *= -1;
+		num *= -1;
 	}
-	while (temp > 0)
+	while (num > 0)
 	{
 		length++;
-		temp /= 10;
+		num /= 10;
 	}
 	return (length);
 }
 
-static char	*get_result(int size, char *str, long long n)
+static char	*get_result(int index, char *str, long long n)
 {
 	while (n > 0)
 	{
-		str[size - 1] = (char)((n % 10) + '0');
-		size--;
+		str[index - 1] = (char)((n % 10) + '0');
+		index--;
 		n /= 10;
 	}
 	return (str);
@@ -45,25 +45,21 @@ static char	*get_result(int size, char *str, long long n)
 
 char	*ft_itoa(int n)
 {
-	int			int_length;
-	int			sign;
+	int			digit_count;
 	char		*result;
-	long long	longn;
+	long long	num;
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	longn = n;
-	int_length = count_int_length(n);
-	if (longn < 0)
-	{
-		sign = -1;
-		longn *= -1;
-	}
-	result = (char *)malloc((int_length + 1) * sizeof(char));
+	num = n;
+	digit_count = count_digits(n);
+	if (num < 0)
+		num *= -1;
+	result = (char *)malloc((digit_count + 1) * sizeof(char));
 	if (result == NULL)
 		return (NULL);
-	result[int_length] = '\0';
-	if (sign == -1)
+	result[digit_count] = '\0';
+	if (n < 0)
 		result[0] = '-';
-	return (get_result(int_length, result, longn));
+	return (get_result(digit_count, result, num));
 }
